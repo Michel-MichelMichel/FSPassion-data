@@ -9,7 +9,7 @@ Données publiques lues par [FS Passion](https://github.com/Michel-MichelMichel/
 
 FS Passion lit ces fichiers au plus une fois par jour, seulement si l'utilisateur l'autorise (Paramètres → Application → Connexion Internet), et ne télécharge que les icônes des DLC présents sur son PC. Aucune donnée n'est envoyée.
 
-Un nouveau DLC n'oblige pas à publier une nouvelle version de FS Passion : il suffit d'ajouter son entrée au catalogue et son icône, puis de lancer `preparer_catalogue_dlc.bat` (dépôt FS Passion) avant la publication.
+Un nouveau DLC n'oblige pas à publier une nouvelle version de FS Passion. Chaque jour, `tools/dlc_watch.py` (GitHub Actions, `.github/workflows/dlc-watch.yml`) lit la [page officielle des DLC](https://www.farming-simulator.com/dlc.php) : un DLC jamais vu est ajouté au catalogue (nom, mots-clés, image, date de sortie) dans une pull request « Nouveaux DLC à vérifier », à fusionner après vérification. Un DLC annoncé reste caché dans FS Passion jusqu'à sa date de sortie.
 
 Les noms et les visuels des DLC appartiennent à GIANTS Software. Ils servent uniquement à reconnaître les DLC installés. FS Passion est un projet indépendant, non affilié à GIANTS Software. Farming Simulator est une marque de GIANTS Software.
 
@@ -17,6 +17,6 @@ Les noms et les visuels des DLC appartiennent à GIANTS Software. Ils servent un
 
 ## English
 
-Public data read by [FS Passion](https://github.com/Michel-MichelMichel/FSPassion), a mod manager for Farming Simulator: the official DLC catalog (`dlc/dlc_catalog.json`) and one icon per DLC (`dlc/icons_dlc_fsXX/`). FS Passion reads them at most once a day, only with the user's consent, and only downloads the icons of DLC installed on their PC. No data is sent.
+Public data read by [FS Passion](https://github.com/Michel-MichelMichel/FSPassion), a mod manager for Farming Simulator: the official DLC catalog (`dlc/dlc_catalog.json`) and one icon per DLC (`dlc/icons_dlc_fsXX/`). A daily GitHub Actions job (`tools/dlc_watch.py`) reads the official DLC page and proposes new DLC as a pull request. FS Passion reads them at most once a day, only with the user's consent, and only downloads the icons of DLC installed on their PC. No data is sent.
 
 DLC names and artwork belong to GIANTS Software and are only used to identify installed DLC. FS Passion is an independent project, not affiliated with GIANTS Software. Farming Simulator is a trademark of GIANTS Software.

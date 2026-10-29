@@ -1,0 +1,88 @@
+# Surveillance des nouveaux DLC : chaque jour, tools/dlc_watch.py lit la page
+# officielle des DLC. S'il y a du nouveau, une pull request « Nouveaux DLC »
+# est ouverte (ou mise à jour) : GitHub prévient l'auteur par e-mail, il
+# vérifie puis clique sur « Merge pull request ».
+# Une image remplacée dans la branche : son empreinte est recalculée seule.
+name: Nouveaux DLC
+
+on:
+  schedule:
+    - cron: "23 6 * * *"     # chaque jour vers 6 h 23 UTC
+  workflow_dispatch:          # bouton « Run workflow » (onglet Actions)
+  push:
+    branches: [dlc-nouveaux]
+    paths: ["dlc/**"]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: dlc-watch
+  cancel-in-progress: false
+
+jobs:
+  watch:
+    if: github.event_name != 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - run: pip install pillow==12.0.0 pytest==8.4.2
+      - run: python -m pytest -q tests
+      - name: Reprendre la pull request en cours (avec ses corrections)
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if gh pr view dlc-nouveaux --json state -q .state 2>/dev/null | grep -q OPEN; then
+            git fetch origin dlc-nouveaux
+            git switch dlc-nouveaux
+            echo "OPEN_PR=1" >> "$GITHUB_ENV"
+          fi
+      - name: Lire la page des DLC
+        run: python tools/dlc_watch.py --summary "$RUNNER_TEMP/summary.md"
+      - name: Ouvrir ou mettre à jour la pull request
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if [ -z "$(git status --porcelain dlc)" ]; then
+            echo "Rien de neuf."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          printf '\n@%s\n' "${{ github.repository_owner }}" >> "$RUNNER_TEMP/summary.md"
+          if [ "$OPEN_PR" = "1" ]; then
+            git add dlc
+            git commit -m "Nouveaux DLC ($(date -u +%Y-%m-%d))"
+            git push origin dlc-nouveaux
+            gh pr comment dlc-nouveaux --body-file "$RUNNER_TEMP/summary.md"
+          else
+            git switch -C dlc-nouveaux
+            git add dlc
+            git commit -m "Nouveaux DLC ($(date -u +%Y-%m-%d))"
+            git push --force origin dlc-nouveaux
+            gh pr create --base main --head dlc-nouveaux \
+              --title "Nouveaux DLC à vérifier" --body-file "$RUNNER_TEMP/summary.md"
+          fi
+
+  hashes:
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - name: Recalculer les empreintes des icônes
+        run: python tools/dlc_watch.py --hashes
+      - name: Enregistrer
+        run: |
+          if [ -n "$(git status --porcelain dlc)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git commit -am "Empreintes des icônes recalculées"
+            git push
+          fi
