@@ -2,3 +2,5 @@
 /demo/
 /dlc/FS*/
 /ProFarm1-model.png
+__pycache__/
+.pytest_cache/
