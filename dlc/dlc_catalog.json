@@ -1,0 +1,819 @@
+{
+  "schema": 1,
+  "updated": "2026-10-29",
+  "_comment": "Noms : titres de https://farmingsimulator.wiki.gg/wiki/Downloadable_Content_Packs sans le préfixe « Farming Simulator XX - » (source=wiki, verified=true). verified=false : nom généré depuis le nom de fichier, absent de la page. keywords : le DLC est reconnu quand son nom de fichier contient tous ces mots (casse ignorée). Icône par défaut : <file>.png, puis <file>.jpg, dans icons_folder (PNG ou JPG, carré de 256 à 512 px ; 460 × 215 accepté pour FS2011 et FS2013).",
+  "versions": {
+    "FS2011": {
+      "icons_folder": "icons_dlc_fs11",
+      "fixed_order": true,
+      "dlc": [
+        {
+          "file": "addonPackage2",
+          "type": "dlc",
+          "name": "Farming Classics (Add-on 2)",
+          "status": "released",
+          "verified": true,
+          "source": "wiki",
+          "sha256": "2d66c73f58598497a0e096afbbda051763bfa0a4e6421e8aa2a7651c498bc54c"
+        },
+        {
+          "file": "dlcPack1",
+          "type": "dlc",
+          "name": "Equipment Pack (DLC 1)",
+          "status": "released",
+          "verified": true,
+          "source": "wiki",
+          "sha256": "b9fdfa4304841c1585dbfe917238e65783c4a938dd6ba52c98e24ffd6da43fb0"
+        },
+        {
+          "file": "dlcPack2",
+          "type": "dlc",
+          "name": "Renewable Energy Pack (DLC 2)",
+          "status": "released",
+          "verified": true,
+          "source": "wiki",
+          "sha256": "6c8f2147e16f7f05161b8b0c030535f426507d6c683bb9b4cfac144d0e0c95ec"
+        },
+        {
+          "file": "dlcPack3",
+          "type": "dlc",
+          "name": "Trailers and Glasshouse Pack (DLC 3)",
+          "status": "released",
+          "verified": true,
+          "source": "wiki",
+          "sha256": "57d50f1f2425f39b83c1490f24af015d6a525c3c13b540c06f2085c12050fe2f"
+        },
+        {
+          "file": null,
+          "keywords": [
+            "profarm"
+          ],
+          "name": "ProFarm1",
+          "icon": "ProFarm1.png",
+          "status": "released",
+          "verified": true,
+          "source": "user",
+          "_note": "Règle 0.2.1 : tout DLC de FS2011 dont le nom contient « profarm » (casse ignorée).",
+          "sha256": "e386468e09a4850e50d28ae8870fc6dafcdfd7d0899926dfebfd63a85bde5471"
+        }
+      ]
+    },
+    "FS2013": {
+      "icons_folder": "icons_dlc_fs13",
+      "dlc": [
+        {
+          "file": "FarmingSimulator2013ClassicsPack",
+          "type": "zip",
+          "name": "Farming Classics (Free)",
+          "status": "released",
+          "verified": true,
+          "source": "wiki",
+          "icon": "FarmingSimulator2013ClassicsPack.jpg",
+          "sha256": "336570ff5c2b88a93d928f014bda9befac79699de395c1008ca10b14776f7477"
+        },
+        {
+          "file": "lindnerUnitracPack",
+          "type": "dlc",
+          "name": "Lindner Unitrac",
+          "status": "released",
+          "verified": true,
+          "source": "wiki",
+          "sha256": "f7d9089056836f0be9bf36fce8d20a0c9027285a424f759e40b1d32792f2eeac"
+        },
+        {
+          "file": "marshallPack",
+          "type": "dlc",
+          "name": "Marshall Trailers",
+          "status": "released",
+          "verified": true,
+          "source": "wiki",
+          "sha256": "199ddfc2e5a19daeab14c3627e12abdfcd7d4cf093b6079d1376421308e145d5"
+        },
+        {
+          "file": "titaniumAddon",
+          "type": "dlc",
+          "name": "Official Expansion (Titanium)",
+          "status": "released",
+          "verified": true,
+          "source": "wiki",
+          "sha256": "2d9f3c2d92f8b10bbe3a81826b1f7bcfbc8a426dff654cfe7ad531c7f8a865a0"
+        },
+        {
+          "file": "ursusAddon",
+          "type": "dlc",
+          "name": "Ursus",
+          "status": "released",
+          "verified": true,
+          "source": "wiki",
+          "sha256": "9eb6bcb54d796b462297ed87c9ba7f234683b49f82dfdcfcca6ecd6d754a487c"
+        },
+        {
+          "file": "vaderstadPack",
+          "type": "dlc",
+          "name": "Väderstad Pack",
+          "status": "released",
+          "verified": true,
+          "source": "wiki",
+          "sha256": "39cc2f6dd48983e33918e1b70403f153e490d71eff47b41c71915101dada425c"
+        }
+      ]
+    },
+    "FS15": {
+      "icons_folder": "icons_dlc_fs15",
+      "dlc": [
+        {
+          "file": "FS15_newHollandLoaderPack",
+          "type": "zip",
+          "name": "New Holland Loader Pack (Free)",
+          "status": "released",
+          "verified": true,
+          "source": "wiki",
+          "sha256": "d514453200ce9e6c3723044fb5941ba03163f0dde06c3c19a2493da032e65beb"
+        },
+        {
+          "file": "FS15_rostselmashNiva",
+          "type": "zip",
+          "name": "Niva (Gold Edition Bonus)",
+          "status": "released",
+          "verified": true,
+          "source": "wiki",
+          "sha256": "7bd7dedc0d8c6601b275cec2b573bab427d0e0c90e20c69fed227609462224a5"
+        },
+        {
+          "file": "goldPack",
+          "type": "dlc",
+          "name": "Official Expansion (Gold)",
+          "status": "released",
+          "verified": true,
+          "source": "wiki",
+          "sha256": "e4573dddaeda1d76fb5f39389f8ba2c4a78d585028ef005d9c38da19e0a4251c"
+        },
+        {
+          "file": "holmerPack",
+          "type": "dlc",
+          "name": "HOLMER",
+          "status": "released",
+          "verified": true,
+          "source": "wiki",
+          "sha256": "f7367e78e61d29c5d74c4698c3c34d368f7cc7cad82f2cfbf0285ebf324495c6"
+        },
+        {
+          "file": "itRunnerPack",
+          "type": "dlc",
+          "name": "ITRunner",
+          "status": "released",
+          "verified": true,
+          "source": "wiki",
+          "sha256": "d6a52bed1b5f1acce2e5469bbe28023bbbedd16a5501effb3c1630546d5db78c"
+        },
+        {
+          "file": "jcbPack",
+          "type": "dlc",
+          "name": "JCB",
+          "status": "released",
+          "verified": true,
+          "source": "wiki",
+          "sha256": "2f3256acad0d71ebcf45e63047a12316b4f9de397347b37f2f09d6ab29e9e715"
+        },
+        {
+          "file": "newHollandPack",
+          "type": "dlc",
+          "name": "New Holland Pack",
+          "status": "released",
+          "verified": true,
+          "source": "wiki",
+          "sha256": "81ed16f46e34bde089f6a04f2342d43111e4b9f3dc0595472870b223e7e24172"
+        }
+      ]
+    },
+    "FS17": {
+      "icons_folder": "icons_dlc_fs17",
+      "dlc": [
+        {
+          "file": "bigBudPack",
+          "type": "dlc",
+          "name": "Big Bud Pack",
+          "status": "released",
+          "verified": true,
+          "source": "wiki",
+          "sha256": "6371a2269852a2568b1bbb232540978a2866974a1cea2c36780706514ced0ed8"
+        },
+        {
+          "file": "FS17_challengerMT700EFieldViper",
+          "type": "zip",
+          "name": "Challenger MT700E Field Wiper",
+          "status": "released",
+          "verified": true,
+          "source": "wiki",
+          "sha256": "97db7cf8f3d3c8945654e732005d614be2f4de230011a232567659e969915ecc"
+        },
+        {
+          "file": "FS17_valtraTSeriesCowEdition",
+          "type": "zip",
+          "name": "Valtra T Series Cow Edition",
+          "status": "released",
+          "verified": true,
+          "source": "wiki",
+          "sha256": "dee4bd2873e9ecbcd1cf8f9eb61bf0cbfb73f870247cab6a48023f65c3b1111b"
+        },
+        {
+          "file": "kuhnPack",
+          "type": "dlc",
+          "name": "KUHN Equipment Pack",
+          "status": "released",
+          "verified": true,
+          "source": "wiki",
+          "sha256": "3c270e8a3b3a295ceef7d0645b28cdb217c07694ce11831ab38b44ec2b101995"
+        },
+        {
+          "file": "platinumEdition",
+          "type": "dlc",
+          "name": "Platinum Expansion",
+          "status": "released",
+          "verified": true,
+          "source": "wiki",
+          "sha256": "dcbf54eeb0637238f682764427a0a764ba9e932e0e08709865cdd612a92da9ef"
+        },
+        {
+          "file": null,
+          "keywords": [
+            "modern"
+          ],
+          "name": "Modern Pack",
+          "icon": "modern.png",
+          "status": "released",
+          "verified": false,
+          "source": "user",
+          "sha256": "4a3dd936ed91b558c6b7e5288ba390fe186d6457083293127c8860c9313d8985"
+        },
+        {
+          "file": null,
+          "keywords": [
+            "straw"
+          ],
+          "name": "Straw Harvest Pack",
+          "icon": "straw.png",
+          "status": "released",
+          "verified": false,
+          "source": "user",
+          "sha256": "f4a6327ceef3bc2750dd2bdb0bdb660987487312ccf53f14497bdcc6ec051b90"
+        },
+        {
+          "file": null,
+          "keywords": [
+            "ropa"
+          ],
+          "name": "Ropa Pack",
+          "icon": "ropa.jpg",
+          "status": "released",
+          "verified": true,
+          "source": "wiki",
+          "sha256": "4b53241045c670c61b265610dfc3cad24f8556d8d8b688cab4db6a2ec24fed1c"
+        }
+      ]
+    },
+    "FS19": {
+      "icons_folder": "icons_dlc_fs19",
+      "dlc": [
+        {
+          "file": "alpineFarmingPack",
+          "type": "dlc",
+          "name": "Alpine Farming Expansion",
+          "status": "released",
+          "verified": true,
+          "source": "wiki",
+          "sha256": "3f64343b5cef02300ac0d8841dc28adc5168e0bb1968e5ac773c42a585323f42"
+        },
+        {
+          "file": "andersonPack",
+          "type": "dlc",
+          "name": "Anderson Group Equipment Pack",
+          "status": "released",
+          "verified": true,
+          "source": "wiki",
+          "sha256": "50b5aedb90279647b1ceb05a791c82e7b71a9335da845341b74b78c3e91d21ac"
+        },
+        {
+          "file": "bourgaultPack",
+          "type": "dlc",
+          "name": "Bourgault DLC",
+          "status": "released",
+          "verified": true,
+          "source": "wiki",
+          "sha256": "2a929ac3ba02ab2300f34b6bb520bd3318d5a397afd79a7bcac8da45aeffc094"
+        },
+        {
+          "file": "claasPack",
+          "type": "dlc",
+          "name": "Platinum Expansion",
+          "status": "released",
+          "verified": true,
+          "source": "wiki",
+          "sha256": "b9ac94ebd4b4e3d33fa9de375ed442a7ae883e10b00d55ddc6307c9ed6745c22"
+        },
+        {
+          "file": "FS19_claasDominator108SL",
+          "type": "zip",
+          "name": "CLAAS Dominator 108 SL DLC (Platinum Expansion Bonus)",
+          "status": "released",
+          "verified": true,
+          "source": "wiki",
+          "sha256": "1c62d8a7a5429eb0c31b28c0212dd541710b33c971dc0ae80cab206cb50e361e"
+        },
+        {
+          "file": "FS19_claasTorion1914DevMule",
+          "type": "zip",
+          "name": "CLAAS TORION 1914 Dev Mule DLC (Platinum Expansion Bonus)",
+          "status": "released",
+          "verified": true,
+          "source": "wiki",
+          "sha256": "4b0002f6fbc95f0d3df718c828c26be4e929bcd3d30cac750304cdeee75ff7a7"
+        },
+        {
+          "file": "FS19_holmerPack",
+          "type": "zip",
+          "name": "HOLMER Terra Variant DLC (Free)",
+          "status": "released",
+          "verified": true,
+          "source": "wiki",
+          "sha256": "492362c22dc1eb774a67396c87ae6f0d44941a71507ed3b6354cfde5c744a357"
+        },
+        {
+          "file": "FS19_mahindraRetriever",
+          "type": "zip",
+          "name": "Mahindra",
+          "status": "released",
+          "verified": true,
+          "source": "wiki",
+          "sha256": "0b41a1c626360d58a47fabe75a7dd22068586d98224080236a92d8c044dae252"
+        },
+        {
+          "file": "grimmePack",
+          "type": "dlc",
+          "name": "GRIMME Equipment Pack",
+          "status": "released",
+          "verified": true,
+          "source": "wiki",
+          "sha256": "52d6bfe794e6b356779514c934f85ef12ee3fa6f58820d042b07600829fe552f"
+        },
+        {
+          "file": "johnDeereCottonPack",
+          "type": "dlc",
+          "name": "John Deere Cotton DLC",
+          "status": "released",
+          "verified": true,
+          "source": "wiki",
+          "sha256": "23a8d2a3729621e9aec235defd1c75e983214d0a05c8d26aed22038fa41091e3"
+        },
+        {
+          "file": "kvernelandPack",
+          "type": "dlc",
+          "name": "Kverneland & Vicon Equipment Pack",
+          "status": "released",
+          "verified": true,
+          "source": "wiki",
+          "sha256": "f7d4557e268c6f433202914254ab1e317c1e3752fa96e51f3ae11b69766471bb"
+        },
+        {
+          "file": "rottnePack",
+          "type": "dlc",
+          "name": "Rottne DLC",
+          "status": "released",
+          "verified": true,
+          "source": "wiki",
+          "sha256": "d528944c1053edc12c801195cdfdc0d64e8533dcfa1c968b5509c62556e53f18"
+        },
+        {
+          "file": null,
+          "keywords": [
+            "season"
+          ],
+          "name": "Season Pass",
+          "icon": "season.jpg",
+          "status": "released",
+          "verified": true,
+          "source": "wiki",
+          "sha256": "da4c0fdfbaf172fd6555a502250790de74b0be548673550503c16defef587294"
+        },
+        {
+          "file": null,
+          "keywords": [
+            "precision"
+          ],
+          "name": "Precision Farming",
+          "icon": "precision.jpg",
+          "status": "released",
+          "verified": false,
+          "source": "user",
+          "sha256": "bc74dea7bcda47cfcd9954975b54856bcf4c5e6083ee4021e0411ac509480805"
+        },
+        {
+          "file": null,
+          "keywords": [
+            "premium"
+          ],
+          "name": "Premium Expansion",
+          "icon": "premium.jpg",
+          "status": "released",
+          "verified": false,
+          "source": "user",
+          "sha256": "5c3164783f80d218a90c22d42640957d7c150deb30ff78987d1869c2dba8b861"
+        }
+      ]
+    },
+    "FS22": {
+      "icons_folder": "icons_dlc_fs22",
+      "dlc": [
+        {
+          "file": "agiPack",
+          "type": "dlc",
+          "name": "AGI Pack",
+          "status": "released",
+          "verified": true,
+          "source": "wiki",
+          "sha256": "ed454ec8ac36b92a27d0c74dcf90ef64a7887ce5a45fb8fd64acc19d672c1652"
+        },
+        {
+          "file": "antonioCarraroPack",
+          "type": "dlc",
+          "name": "ANTONIO CARRARO Pack",
+          "status": "released",
+          "verified": true,
+          "source": "wiki",
+          "sha256": "5fb90ae1c40a4d7a879f369e3ad2717d35425b5092ff0b8c28b6c671b9a6f729"
+        },
+        {
+          "file": "claasSaddleTracPack",
+          "type": "dlc",
+          "name": "CLAAS XERION SADDLE TRAC Pack",
+          "status": "released",
+          "verified": true,
+          "source": "wiki",
+          "sha256": "11690c2dde11dbbad08629ef0c8dd8c8ecf99e6479c6f0adf8bd858c4db680c1"
+        },
+        {
+          "file": "eroPack",
+          "type": "dlc",
+          "name": "ERO Grapeliner Series 7000",
+          "status": "released",
+          "verified": true,
+          "source": "wiki",
+          "sha256": "2a5ce8f254ced0518c1f90c11bdcbfcd67adc8918a45d928d2a6b5fc5d47e1fb"
+        },
+        {
+          "file": "extraContentFarmallPack",
+          "type": "dlc",
+          "name": "Case IH Farmall Anniversary Pack",
+          "status": "released",
+          "verified": true,
+          "source": "wiki",
+          "sha256": "0f05d3fb6f4df4bf10675a566a1f5bcaa0a60d4922f6b217ea46eadbebb911da"
+        },
+        {
+          "file": "extraContentFendtBlackBeauty",
+          "type": "dlc",
+          "name": "Fendt 900 Black Beauty",
+          "status": "released",
+          "verified": true,
+          "source": "wiki",
+          "sha256": "8253e83f81d1c7142e8786de891a9faa3e77983faf6c6b04b5a9a5f1d448f0b9"
+        },
+        {
+          "file": "extraContentMackBlackAnthem",
+          "type": "dlc",
+          "name": "Mack Trucks: Black Anthem",
+          "status": "released",
+          "verified": true,
+          "source": "wiki",
+          "sha256": "fdcd9bf11ca536ba5d2dd6ca570a1d1cd45d6796f2761278935f66357000d43a"
+        },
+        {
+          "file": "extraContentPorscheJunior",
+          "type": "dlc",
+          "name": "Porsche Diesel Junior 108",
+          "status": "released",
+          "verified": true,
+          "source": "wiki",
+          "sha256": "64482d6604211996df30989e18b4ce295ef43dd30720f6d3dc6040068a9c70f8"
+        },
+        {
+          "file": "extraContentVolvoLM845",
+          "type": "dlc",
+          "name": "Volvo LM 845",
+          "status": "released",
+          "verified": true,
+          "source": "wiki",
+          "sha256": "24dd022aa669611425d0402c917869b58e2d8785c86d2d5a60386ff220995ef8"
+        },
+        {
+          "file": "extraContentVolvoT425",
+          "type": "dlc",
+          "name": "Volvo T 425 Krabat",
+          "status": "released",
+          "verified": true,
+          "source": "wiki",
+          "sha256": "a78dc5ac6954dca33b45093d6c19f54c5fe92d02f5ae35752f64186d6cc1e8e8"
+        },
+        {
+          "file": "extraContentZetor",
+          "type": "dlc",
+          "name": "Zetor 25 K",
+          "status": "released",
+          "verified": true,
+          "source": "wiki",
+          "sha256": "4f02407bf981539b0a1ee585bbdfce94292fdd3ae42d1dcef62742b158205455"
+        },
+        {
+          "file": "farmProductionPack",
+          "type": "dlc",
+          "name": "Farm Production Pack",
+          "status": "released",
+          "verified": true,
+          "source": "wiki",
+          "sha256": "15381e09aa97c6ffb6842db0f0924e84f84720aecd90522afcac594cf69998ca"
+        },
+        {
+          "file": "forestryPack",
+          "type": "dlc",
+          "name": "Platinum Expansion",
+          "status": "released",
+          "verified": true,
+          "source": "wiki",
+          "sha256": "bc3c84aae4b360857e70b13f6c48dcc90c34b3b3594158e59e966efe6c8705cc"
+        },
+        {
+          "file": "goeweilPack",
+          "type": "dlc",
+          "name": "Göweil Pack",
+          "status": "released",
+          "verified": true,
+          "source": "wiki",
+          "sha256": "bd00450851948483944d25c544a1542eb0f3afad7d335b66cfc9e16c441335d9"
+        },
+        {
+          "file": "hayAndForagePack",
+          "type": "dlc",
+          "name": "Hay & Forage Pack",
+          "status": "released",
+          "verified": true,
+          "source": "wiki",
+          "sha256": "72dc7e72712f7be197335bec5e9a54850a770dd354716076b5fbd3e49db72fbf"
+        },
+        {
+          "file": "horschAgrovation",
+          "type": "dlc",
+          "name": "HORSCH AgroVation Pack",
+          "status": "released",
+          "verified": true,
+          "source": "wiki",
+          "sha256": "812ad0eeddd7db8971c6e3d2fd1441fd9c2d74f901cb8dc8a65e727530a52bc5"
+        },
+        {
+          "file": "kubotaPack",
+          "type": "dlc",
+          "name": "Kubota Pack",
+          "status": "released",
+          "verified": true,
+          "source": "wiki",
+          "sha256": "67e3ca460836b029970686c4aa3e2cd1a43ecd480fac7e3fcaa5e98bd5ed50de"
+        },
+        {
+          "file": "oxboPack",
+          "type": "dlc",
+          "name": "OXBO Pack",
+          "status": "released",
+          "verified": true,
+          "source": "wiki",
+          "sha256": "5adac90ca2f4e332f02a5e23d4e13a3d49203fc6e20fac4405eef0409ac05dec"
+        },
+        {
+          "file": "premiumExpansion",
+          "type": "dlc",
+          "name": "Premium Expansion",
+          "status": "released",
+          "verified": true,
+          "source": "wiki",
+          "sha256": "682ce1c040578da0db747614f27a3afd2b27ec99c429b0941728e0bbbddfc556"
+        },
+        {
+          "file": "pumpsAndHosesPack",
+          "type": "dlc",
+          "name": "Pumps n'Hoses Pack",
+          "status": "released",
+          "verified": true,
+          "source": "wiki",
+          "sha256": "252dae724ae77debd06dee2f532b2a8b7e2ef80210be31532df7218eb9081029"
+        },
+        {
+          "file": "vermeerPack",
+          "type": "dlc",
+          "name": "Vermeer Pack",
+          "status": "released",
+          "verified": true,
+          "source": "wiki",
+          "sha256": "20c4e6b38d68e2c571f14cd3fc5b49c24cdb4566ceecf8e42bb7a0161b75fdbd"
+        },
+        {
+          "file": null,
+          "keywords": [
+            "seasonpass"
+          ],
+          "name": "Year 1 Season Pass",
+          "icon": "seasonpass.jpg",
+          "status": "released",
+          "verified": true,
+          "source": "wiki",
+          "sha256": "90fb872c9c350586a8f9b81335befa76222b00007db7a87790b5b45ba8c7765a"
+        },
+        {
+          "file": null,
+          "keywords": [
+            "precision"
+          ],
+          "name": "Precision Farming",
+          "icon": "precision.png",
+          "status": "released",
+          "verified": false,
+          "source": "user",
+          "sha256": "22228ebe136ab0ace445072e5f92cdc88fa513fd82e2b2f2ecfca7ea9ac17323"
+        },
+        {
+          "file": null,
+          "keywords": [
+            "year2"
+          ],
+          "name": "Year 2 Season Pass",
+          "icon": "year2.jpg",
+          "status": "released",
+          "verified": true,
+          "source": "wiki",
+          "sha256": "345fb9e5c0b852247535e54db806acac093fee5774c8510a1c3cd89e01567fac"
+        }
+      ]
+    },
+    "FS25": {
+      "icons_folder": "icons_dlc_fs25",
+      "dlc": [
+        {
+          "file": "daimlerTruckPack",
+          "type": "dlc",
+          "name": "Mercedes-Benz Trucks Pack",
+          "status": "released",
+          "verified": true,
+          "source": "wiki",
+          "sha256": "1f1c424004c0391b93fc0f3ad49839106de65fc0cb113c507ae443b6c62aaf67"
+        },
+        {
+          "file": "emergencyPack",
+          "type": "dlc",
+          "name": "Emergency Pack",
+          "status": "released",
+          "verified": false,
+          "sha256": "bae2e5d1650c804512de3ecf01e0073f708a1ae503ffe53e3adc0b7dfb42cc90"
+        },
+        {
+          "file": "extraContentNewHollandCR11",
+          "type": "dlc",
+          "name": "New Holland CR11 Gold Edition",
+          "status": "released",
+          "verified": true,
+          "source": "wiki",
+          "sha256": "c9827ed7a957dcd70ce6f03cfd0872c54ffd0bf1d2001d993c34b8db29b9f956"
+        },
+        {
+          "file": "extraContentWorldsFastestTractor",
+          "type": "dlc",
+          "name": "JCB - WFT",
+          "status": "released",
+          "verified": true,
+          "source": "wiki",
+          "sha256": "8513a4be64089e3a7545691943d8c33f36821b092f4fcafea275153a223dae99"
+        },
+        {
+          "file": "highlandsFishingPack",
+          "type": "dlc",
+          "name": "Highlands Fishing Expansion",
+          "status": "released",
+          "verified": true,
+          "source": "wiki",
+          "sha256": "1f3ddd1d7c7d40448b6d26fd602c3310bad26e2176fd2f518acc83eb12894600"
+        },
+        {
+          "file": "macDonPack",
+          "type": "dlc",
+          "name": "MacDon Pack",
+          "status": "released",
+          "verified": true,
+          "source": "wiki",
+          "sha256": "7ca9d69b110c18573a6ff24f613f69ccb5f717c055beb47d04c4a7ddd8f3cb2e"
+        },
+        {
+          "file": "nexatPack",
+          "type": "dlc",
+          "name": "NEXAT Pack",
+          "status": "released",
+          "verified": true,
+          "source": "wiki",
+          "sha256": "8748ca8e8246b8dc4d860c2cb44c8f25489a495f742d345db10b933fe64720e7"
+        },
+        {
+          "file": "plainsAndPrairiesPack",
+          "type": "dlc",
+          "name": "Plains & Prairies Pack",
+          "status": "released",
+          "verified": true,
+          "source": "wiki",
+          "sha256": "623ca7f4482ceaa63458ef687f0cc5bd45de4129f68be7e48456171637faf6ac"
+        },
+        {
+          "file": "pumpsAndHosesPack",
+          "type": "dlc",
+          "name": "Pumps And Hoses Pack",
+          "status": "released",
+          "verified": false,
+          "sha256": "75a4c6e0af95c9ac9d5ae6b2fa5beef9ef5d40c0e934417fc4d15af2bc06d2a5"
+        },
+        {
+          "file": "skyAgriculturePack",
+          "type": "dlc",
+          "name": "SKY Agriculture Pack",
+          "status": "released",
+          "verified": true,
+          "source": "wiki",
+          "sha256": "4b02d1d8d85c5d6c801c41eb47e040ff2580b7d8ba06ac754117c04fa7626169"
+        },
+        {
+          "file": "strawHarvestPack",
+          "type": "dlc",
+          "name": "Straw Harvest Pack",
+          "status": "released",
+          "verified": true,
+          "source": "wiki",
+          "sha256": "04d35a961fee84d3bf47ad2373e3836c77d19eb9d2713d72ae1ff1967a64116e"
+        },
+        {
+          "file": "vredoPack",
+          "type": "dlc",
+          "name": "Vredo Pack",
+          "status": "released",
+          "verified": true,
+          "source": "wiki",
+          "sha256": "9f07354dfee22c6f1c083d0b4779be2c8516fcb2e85de7e138a63ebc6e77423b"
+        },
+        {
+          "file": null,
+          "keywords": [
+            "beans",
+            "alpacas"
+          ],
+          "name": "Beans & Alpacas Expansion",
+          "icon": "beansAndAlpacas.jpg",
+          "status": "released",
+          "verified": true,
+          "release_date": "2026-10-28",
+          "sha256": "0d7cd0da7abe669dc98ad12cfc21732a2c9bfeb7e9444bea5bdd9cb5482670fe"
+        },
+        {
+          "file": null,
+          "keywords": [
+            "precision"
+          ],
+          "name": "Precision Farming",
+          "icon": "precision.jpg",
+          "status": "released",
+          "verified": false,
+          "source": "user",
+          "sha256": "b6c4c94ced0258c7b9d95ea195b3f222a7998135d5853f64b381d60af12b9564"
+        },
+        {
+          "file": null,
+          "keywords": [
+            "pass1"
+          ],
+          "name": "Year 1 Season Pass",
+          "icon": "pass1.jpg",
+          "status": "released",
+          "verified": true,
+          "source": "wiki",
+          "sha256": "a1d266ca8186d7f4f5b6b1f2f77b805c16b91027149868d023aab4c336a965e5"
+        },
+        {
+          "file": null,
+          "keywords": [
+            "pass2"
+          ],
+          "name": "Year 2 Season Pass",
+          "icon": "pass2.jpg",
+          "status": "released",
+          "verified": true,
+          "source": "wiki",
+          "sha256": "324b15fd1c4eaf2b06a673d1bb2f2bbad0b9dcd53d8fc9cc4f42e2b12fccfec9"
+        }
+      ]
+    },
+    "FS28": {
+      "icons_folder": "icons_dlc_fs28",
+      "dlc": []
+    }
+  }
+}
