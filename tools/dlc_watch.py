@@ -97,7 +97,8 @@ def parse_list(page: str) -> list[dict[str, str]]:
 
 
 def keywords(name: str) -> list[str]:
-    """Mots du nom qui reconnaîtront le fichier du DLC (casse ignorée)."""
+    """Mots du nom (casse ignorée), pour comparer deux noms de DLC (catalogue,
+    Steam). Les mots-clés d'un nouveau DLC viennent de file_keywords()."""
     ascii_name = unicodedata.normalize("NFKD", name).encode("ascii", "ignore").decode().lower()
     words = [w for w in re.findall(r"[a-z0-9]+", ascii_name) if w not in STOP_WORDS and len(w) > 1]
     out: list[str] = []
@@ -105,6 +106,56 @@ def keywords(name: str) -> list[str]:
         if w not in out:
             out.append(w)
     return out[:4] or [re.sub(r"[^a-z0-9]", "", ascii_name)[:20]]
+
+
+# Mots du nom commercial que GIANTS ne met presque jamais dans le nom du
+# fichier du DLC (« GRIMME Equipment Pack » → grimmePack).
+GENERIC_WORDS = STOP_WORDS | {
+    "new", "big", "black", "gold", "series", "equipment", "anniversary", "official",
+    "year", "season", "farming", "simulator", "add", "on",
+}
+UMLAUTS = "äöüß"
+
+
+def _file_words(name: str) -> list[str]:
+    """Mots du nom, dans l'ordre, prêts à chercher dans un nom de fichier.
+
+    Lettre accentuée allemande : GIANTS écrit tantôt « goeweilPack »
+    (Göweil), tantôt « vaderstadPack » (Väderstad). On garde le plus long
+    morceau du mot qui ne la contient pas (« weil », « derstad ») : il est
+    présent dans les deux écritures."""
+    out: list[str] = []
+    for raw in re.findall(r"[^\W_]+", name.lower()):
+        if any(c in raw for c in UMLAUTS):
+            parts = [unicodedata.normalize("NFKD", p).encode("ascii", "ignore").decode()
+                     for p in re.split(f"[{UMLAUTS}]", raw)]
+            best = max(parts, key=len)
+            word = best if len(best) >= 4 else unicodedata.normalize("NFKD", raw).encode("ascii", "ignore").decode()
+        else:
+            word = unicodedata.normalize("NFKD", raw).encode("ascii", "ignore").decode()
+        word = re.sub(r"[^a-z0-9]", "", word)
+        if len(word) >= 3 and not word.isdigit() and word not in GENERIC_WORDS and word not in out:
+            out.append(word)
+    return out
+
+
+def file_keywords(name: str, vcat: dict[str, Any] | None = None) -> list[str]:
+    """Mots-clés d'un nouveau DLC dont le nom de fichier n'est pas encore connu.
+
+    Un seul mot suffit le plus souvent : le premier mot distinctif, en général
+    la marque (mesuré sur les DLC FS19 à FS25 dont le fichier est connu : bien
+    plus de fichiers reconnus qu'avec tous les mots du nom). Si ce mot désigne
+    déjà un autre DLC du même jeu (son fichier ou ses mots-clés), le mot
+    suivant est ajouté, jusqu'à ce qu'il n'y ait plus d'ambiguïté."""
+    words = _file_words(name) or keywords(name)[:1]
+    others = [" ".join([e.get("file") or "", *(e.get("keywords") or [])]).lower()
+              for e in (vcat or {}).get("dlc") or []]
+    kws = words[:1]
+    for w in words[1:4]:
+        if not any(all(k in text for k in kws) for text in others):
+            break
+        kws.append(w)
+    return kws
 
 
 # --------------------------------------------------------------------------
@@ -213,7 +264,7 @@ def run(page: str, today: dt.date, use_steam: bool = True) -> list[str]:
         if old is not None:
             lines.append(f"- {d['game']} · **{d['name']}** : déjà au catalogue (« {old.get('name')} »), seulement noté comme vu.")
             continue
-        entry: dict[str, Any] = {"file": None, "keywords": kws, "name": d["name"], "type": "dlc"}
+        entry: dict[str, Any] = {"file": None, "keywords": file_keywords(d["name"], vcat), "name": d["name"], "type": "dlc"}
         status, release = "released", today
         steam = steam_release(d["game"], kws) if use_steam else None
         if steam and steam["date"]:
@@ -232,11 +283,15 @@ def run(page: str, today: dt.date, use_steam: bool = True) -> list[str]:
         lines.append(
             f"- {d['game']} · **{d['name']}** ({d['price'] or 'prix inconnu'}) — état « {status} », "
             f"sortie {release.isoformat()}{' (Steam)' if steam and steam['date'] else ' (date du jour : Steam ne la donne pas)'} ; "
-            f"mots-clés `{' '.join(kws)}` ; image : {icon_note}. "
+            f"mots-clés `{' '.join(entry['keywords'])}` ; image : {icon_note}. "
             f"[Fiche GIANTS]({BASE}dlc-detail.php?dlc_id={d['id']})"
         )
 
-    # Les DLC annoncés dont la date est passée sont sortis.
+    # Les DLC annoncés dont la date est passée sont sortis. FS Passion compare
+    # lui-même la date : ce changement seul n'ouvre pas de pull request, il
+    # accompagne la prochaine (nouveau DLC).
+    if not lines:
+        return []
     for vid, vcat in catalog["versions"].items():
         for e in vcat.get("dlc") or []:
             rd = e.get("release_date")

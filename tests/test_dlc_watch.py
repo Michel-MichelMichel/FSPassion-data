@@ -78,13 +78,44 @@ def test_keywords_follow_the_catalog_convention():
     assert dw.keywords("Cool Tractors & GÖWEIL Pack") == ["cool", "tractors", "goweil"]
 
 
+def test_file_keywords_keep_the_distinctive_word():
+    # Le premier mot distinctif (la marque), sans les mots descriptifs.
+    assert dw.file_keywords("GRIMME Equipment Pack") == ["grimme"]
+    assert dw.file_keywords("Fendt 900 Black Beauty") == ["fendt"]
+    assert dw.file_keywords("New Holland CR11 Gold Edition") == ["holland"]
+    # Lettre accentuée allemande : le morceau commun aux deux écritures de GIANTS.
+    assert dw.file_keywords("Göweil Pack") == ["weil"]          # goeweilPack
+    assert dw.file_keywords("Väderstad Pack") == ["derstad"]    # vaderstadPack
+
+
+def test_file_keywords_add_a_word_when_the_first_one_is_taken():
+    vcat = {"dlc": [{"file": "extraContentVolvoT425", "name": "Volvo T 425 Krabat"},
+                    {"file": None, "keywords": ["farm"], "name": "Farm Pack"}]}
+    assert dw.file_keywords("Volvo LM 845", vcat) == ["volvo"]  # « lm » trop court, « 845 » : chiffres
+    assert dw.file_keywords("Volvo Trucks Pack", vcat) == ["volvo", "trucks"]
+    assert dw.file_keywords("Farm Production Pack", vcat) == ["farm", "production"]
+
+
+def test_file_keywords_recognise_most_known_files():
+    cat = json.loads((ROOT / "dlc" / "dlc_catalog.json").read_text(encoding="utf-8"))
+    ok = total = 0
+    for vid in ("FS19", "FS22", "FS25"):
+        entries = cat["versions"][vid]["dlc"]
+        for i, e in enumerate(entries):
+            if e.get("file"):
+                kws = dw.file_keywords(e["name"], {"dlc": entries[:i] + entries[i + 1:]})
+                total += 1
+                ok += all(k in e["file"].lower() for k in kws)
+    assert ok / total >= 0.85
+
+
 def test_new_dlc_is_added_with_icon_and_known_one_is_skipped(repo):
     lines = dw.run(PAGE, dt.date(2026, 11, 3), use_steam=False)
     assert len(lines) == 1 and "Cool Tractors" in lines[0]
     cat = json.loads((repo / "dlc_catalog.json").read_text(encoding="utf-8"))
     e = cat["versions"]["FS25"]["dlc"][-1]
     assert e["name"] == "Cool Tractors & GÖWEIL Pack" and e["file"] is None
-    assert e["keywords"] == ["cool", "tractors", "goweil"] and e["status"] == "released"
+    assert e["keywords"] == ["cool"] and e["status"] == "released"
     assert e["release_date"] == "2026-11-03" and e["icon"] == "newcoolpack.jpg" and len(e["sha256"]) == 64
     from PIL import Image
 
@@ -101,8 +132,15 @@ def test_announced_dlc_becomes_released_on_its_date(repo, monkeypatch):
     cat = json.loads((repo / "dlc_catalog.json").read_text(encoding="utf-8"))
     e = cat["versions"]["FS25"]["dlc"][-1]
     assert e["status"] == "announced" and e["release_date"] == "2026-12-01"
-    lines = dw.run(PAGE, dt.date(2026, 12, 1))
-    assert any("passé en « released »" in x for x in lines)
+    # Le jour J, sans autre nouveauté : pas de pull request (FS Passion
+    # compare la date lui-même), le catalogue n'est pas touché.
+    assert dw.run(PAGE, dt.date(2026, 12, 1)) == []
+    cat = json.loads((repo / "dlc_catalog.json").read_text(encoding="utf-8"))
+    assert cat["versions"]["FS25"]["dlc"][-1]["status"] == "announced"
+    # Avec le DLC suivant, le changement d'état l'accompagne.
+    page2 = PAGE.replace("fs25newcoolpack", "fs25vervaet").replace("Cool Tractors &amp; GÖWEIL Pack", "Vervaet Pack")
+    lines = dw.run(page2, dt.date(2026, 12, 2))
+    assert any("Vervaet" in x for x in lines) and any("passé en « released »" in x for x in lines)
 
 
 def test_steam_dates():
